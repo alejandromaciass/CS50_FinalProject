@@ -3,23 +3,15 @@ Python Web Application - Snake
 #### Video Demo: https://www.youtube.com/watch?v=3JkKUo7drXc 
 
 #### Description:
-The game Snake is a classic and well-known game in which the player controls a snake 
-that moves around the screen, collecting fruit and avoiding obstacles. The goal of 
-the game is to eat as much fruit as possible, causing the snake to grow longer and 
-longer. The player must navigate the snake through the game field, avoiding running
-into the walls or the snake's own body. If the snake collides with any of these 
-obstacles, the game is over.
+The Snake game is a classic and well-known game that has been around for decades. It is a simple yet challenging game that has been enjoyed by players of all ages. In the game, the player controls a snake that moves around the screen, collecting fruit and avoiding obstacles. The goal of the game is to eat as much fruit as possible, causing the snake to grow longer and longer.
 
-One of the files I wrote for this project is the Snake class, which handles the movement 
-and growth of the snake. This class contains functions for moving the snake in different 
-directions, checking for collisions with obstacles, and increasing the length of the snake 
-when it eats fruit. Another file I wrote is the Game class, which handles the overall
-gameplay and manages the game loop. This class contains functions for rendering the game 
-field, checking for player input, and updating the game state.
+To play the game, the player must navigate the snake through the game field, avoiding running into the walls or the snake's own body. If the snake collides with any of these obstacles, the game is over. To make the game more challenging, the snake's movement speed increases as it eats more fruit, making it harder to navigate through the game field without crashing.
 
-One design choice I debated was how to handle the snake's movement. I considered using a
-grid-based system, where the snake can only move to the cells immediately adjacent to 
-its current position. However, I ultimately decided to use continuous movement, where the
-snake can move to any position on the screen. This allows for smoother and more fluid
-gameplay, but it also requires more complex collision detection.
+One of the key components of the Snake game is the Snake class, which handles the movement and growth of the snake. This class contains functions for moving the snake in different directions, checking for collisions with obstacles, and increasing the length of the snake when it eats fruit. Another important class is the Game class, which handles the overall gameplay and manages the game loop. This class contains functions for rendering the game field, checking for player input, and updating the game state.In addition to the Snake and Game classes, there is also a Food class, which represents the food that the snake must eat to grow. The Food class has an init function that creates an oval object on the canvas to represent the food and stores the (x, y) coordinates of the food in a "coordinates" attribute.
+
+The game is played through the game loop, which is implemented in the next_turn function. This function is called repeatedly at a certain speed (determined by the SPEED constant) and updates the game state by moving the snake, checking for collisions, and increasing the score if the snake eats food. The direction in which the snake is moving is stored in the "direction" variable, which can be changed by the change_direction function.The check_collisions function is used to determine whether the snake has collided with any obstacles, such as the walls of the game field or its own body. If a collision is detected, the game_over function is called to end the game and show a "GAME OVER" message on the screen. If the game is over, the restart_button variable is checked, and if it is None (meaning the restart button has not been created yet), a Button widget is created and added to the window, allowing the player to restart the game by clicking on the button.The next_turn function is the heart of the Snake game's gameplay. It is called repeatedly at a certain speed (determined by the SPEED constant) and updates the game state by moving the snake, checking for collisions, and increasing the score if the snake eats food.To move the snake, the function first determines the direction in which the snake is moving based on the "direction" variable, which can be changed by the change_direction function. It then calculates the new (x, y) coordinates of the snake's head based on the direction. The snake's body is then updated by inserting the new coordinates at the beginning of the "coordinates" list and removing the last element of the list. The Snake class's squares are also updated by creating a new rectangle on the canvas at the new coordinates and deleting the last rectangle in the "squares" list. After updating the snake's position, the next_turn function checks for collisions with obstacles using the check_collisions function. If a collision is detected, the game_over function is called to end the game and show a "GAME OVER" message on the screen.
+
+The game_over function is responsible for ending the game and displaying the "GAME OVER" message on the screen. It does this by setting the "running" variable to False, which causes the main game loop to stop. The function also checks the value of the restart_button variable. If it is None (meaning the restart button has not been created yet), the function creates a Button widget and adds it to the window, allowing the player to restart the game by clicking on the button. Overall, the next_turn and game_over functions play a crucial role in the Snake game's gameplay, controlling the movement of the snake, checking for collisions, and ending the game when necessary.
+
+One design choice that the developer of this particular implementation of the Snake game had to make was how to handle the snake's movement. One option was to use a grid-based system, where the snake can only move to the cells immediately adjacent to its current position. However, the developer ultimately decided to use continuous movement, where the snake can move to any position on the screen. This allows for smoother and more fluid gameplay, but it also requires more complex collision detection.
 
